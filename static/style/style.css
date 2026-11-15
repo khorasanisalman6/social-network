@@ -1,0 +1,36 @@
+
+/* General Settings */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Navbar */
+.site-navbar {
+    padding: 15px 0;
+    background-color: #123B75;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Navbar Brand */
+.site-navbar .navbar-brand {
+    font-size: 25px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+/* Navbar Links */
+.site-navbar .nav-link {
+    color: #ffffff;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+/* Navbar Link Hover */
+.site-navbar .nav-link:hover {
+    color: #bfdbfe;
+}

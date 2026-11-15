@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}My Profile{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-body">
+            <h3>My Profile</h3>
+
+            <img src="{{ profile.image.url }}"
+                 alt="Profile Image"
+                 width="150">
+
+            <p>Username: {{ profile.user.username }}</p>
+            <p>Email: {{ profile.user.email }}</p>
+            <p>First Name: {{ profile.user.first_name }}</p>
+            <p>Last Name: {{ profile.user.last_name }}</p>
+            <p>Bio: {{ profile.bio }}</p>
+            <p>Age: {{ profile.age }}</p>
+            <p>Address: {{ profile.address }}</p>
+            <p><a class="btn btn-primary form-control mt-3" href="{% url 'account:edit_profile' %}">Edit</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

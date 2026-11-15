@@ -1,0 +1,52 @@
+
+<nav class="navbar site-navbar">
+    <div class="container">
+
+        <a class="navbar-brand" href="{% url 'blog:home' %}">
+            My Blog
+        </a>
+
+        <ul class="navbar-nav flex-row align-items-center gap-3">
+
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'blog:home' %}">
+                    Home
+                </a>
+            </li>
+
+            {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account:profile' %}">Profile</a>
+                </li>
+
+                <li class="nav-item">
+                    <form method="post" action="{% url 'account:logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="nav-link btn btn-link">
+                            Logout
+                        </button>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'account:update' user.pk %}" class="nav-link">Edit</a>
+                </li>
+
+            {% else %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account:register' %}">
+                        Register
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account:login' %}">
+                        Login
+                    </a>
+                </li>
+
+            {% endif %}
+
+        </ul>
+    </div>
+</nav>
