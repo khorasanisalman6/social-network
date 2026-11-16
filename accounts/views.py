@@ -53,29 +53,6 @@ class UserLogoutView(LoginRequiredMixin,View):
         messages.success(request,'Successfully logged out' , 'success')
         return redirect('account:login')
 
-class UserUpdateView(LoginRequiredMixin,View):
-    template_name = 'accounts/update.html'
-    form_class = UserUpdateForm
-    def setup(self, request, *args, **kwargs):
-        self.user = get_object_or_404(User, pk=kwargs['user_id'])
-        return super().setup(request,*args,**kwargs)
-    def dispatch(self, request, *args, **kwargs):
-        if request.user != self.user :
-            return redirect('blog:home')
-        return super().dispatch(request,*args , **kwargs)
-    def get(self,request,*args,**kwargs):
-        form = self.form_class(instance=self.user)
-        return render(request,self.template_name,{'form':form , 'user':self.user})
-
-    def post(self,request,*args,**kwargs):
-        form = self.form_class(request.POST, instance=self.user)
-        if form.is_valid():
-            form.save()
-            messages.success(request,'Successfully updated account' , 'success')
-            return redirect('blog:home')
-        messages.error(request,'Invalid Credentials' , 'danger')
-        return render(request,self.template_name,{'form':form , 'user':self.user})
-
 class UserProfileView(LoginRequiredMixin, View):
     template_name = 'accounts/profile.html'
     def get(self, request):
